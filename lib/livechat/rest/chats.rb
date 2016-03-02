@@ -6,6 +6,10 @@ module LiveChat
         #chats is different than the other resources
         @list_key = 'chats'
       end
+
+      def new(visitor_id, *args)
+        @client.post "#{@path}/#{visitor_id}/chat/start", Hash[*args]
+      end
     end
 
     class Chat < InstanceResource
@@ -14,8 +18,9 @@ module LiveChat
         self
       end
 
-      def start(visitor_id, license_id, welcome_message, *args)
-        @client.post "#{@path}/#{visitor_id}/chat/start", "license_id=#{license_id}&welcome_message=#{welcome_message}&" + Hash[*args]
+      def send_message(visitor_id, *args)
+        @client.post "#{@path}/#{visitor_id}/chat/send_mess", Hash[*args]
+        self
       end
     end
   end
