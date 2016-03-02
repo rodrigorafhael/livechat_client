@@ -10,7 +10,7 @@ module LiveChat
       end
 
       def get_pending_messages(visitor_id, *args)
-        @client.post "#{@path}/#{visitor_id}/chat/get_pending_messages", Hash[*args]
+        @client.get "#{@path}/#{visitor_id}/chat/get_pending_messages", Hash[*args]
       end
 
       def send_message(visitor_id, *args)
