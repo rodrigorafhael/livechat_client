@@ -6,19 +6,19 @@ module LiveChat
       end
 
       def new(visitor_id, *args)
-        @client.post "#{@path}/visitors/#{visitor_id}/chat/start", Hash[*args]
+        @client.post "#{@path}/#{visitor_id}/chat/start", Hash[*args]
       end
 
       def get_pending_messages(visitor_id, *args)
-        @client.post "#{@path}/visitors/#{visitor_id}/chat/get_pending_messages", Hash[*args]
+        @client.post "#{@path}/#{visitor_id}/chat/get_pending_messages", Hash[*args]
       end
 
       def send_message(visitor_id, *args)
-        @client.post "#{@path}/visitors/#{visitor_id}/chat/send_message", Hash[*args]
+        @client.post "#{@path}/#{visitor_id}/chat/send_message", Hash[*args]
       end
 
       def close(visitor_id, *args)
-        @client.post "#{@path}/visitors/#{visitor_id}/chat/close", Hash[*args]
+        @client.post "#{@path}/#{visitor_id}/chat/close", Hash[*args]
       end
     end
 
