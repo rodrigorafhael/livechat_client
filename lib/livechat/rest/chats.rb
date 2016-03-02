@@ -13,6 +13,10 @@ module LiveChat
         @client.post "#{@path}/send_transcript", Hash[*args]
         self
       end
+
+      def start(visitor_id, license_id, welcome_message, *args)
+        @client.post "#{@path}/#{visitor_id}/chat/start", "license_id=#{license_id}&welcome_message=#{welcome_message}&" + Hash[*args]
+      end
     end
   end
 end
